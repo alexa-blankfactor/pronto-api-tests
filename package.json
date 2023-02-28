@@ -1,0 +1,34 @@
+{
+  "name": "pronto-api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:local": "cypress open --env configFile=development,allure=true",
+    "allure:report": "allure generate cypress/allure/allure_results — clean -o cypress/allure/allure_report",
+    "allure:clear": "rm -r cypress/allure/allure_results/ cypress/allure/allure_report/",
+    "allure:open": "allure open cypress/allure/allure_report/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cypress-extends": "^1.1.0",
+    "@cypress/webpack-preprocessor": "^5.17.0",
+    "@faker-js/faker": "^7.6.0",
+    "@shelex/cypress-allure-plugin": "^2.35.2",
+    "cypress": "^12.6.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "pg": "^8.9.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress-plugin-api": "^2.10.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}",
+    "nonGlobalStepDefinitions": true
+  }
+}

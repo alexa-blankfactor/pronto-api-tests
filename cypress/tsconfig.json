@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    "types": ["cypress", "node","cypress-plugin-api","@shelex/cypress-allure-plugin"],
+    "module": "commonjs",
+    "esModuleInterop": true,    
+    "forceConsistentCasingInFileNames": true,  
+    "strict": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "baseUrl": "./",
+    "noEmit": true
+  },
+  "include": ["**/*.ts", "../cypress.config.ts"]
+}

@@ -1,0 +1,33 @@
+{
+"env":{
+    "account_management_url": "http://localhost:5002/accounts",
+    "user_management_url": "http://localhost:5001/users",
+    "keycloak_url": "http://localhost:9000",
+    "employer_deposits_url": "http://localhost:5006/deposits",
+    "transaction_url": "http://localhost:5007/transactions",
+    "crypto_url": "http://localhost:5005/exchange",
+    "identy_url": "http://localhost:5004/identity",
+    "apiKey": "prontomas",
+    "keycloak_credencial": {
+        "client_id": "user-management-api",
+        "client_secrest": "WAbk2UkmZ4gDsizC4QCBZ1rEUiDFKVxh"
+    },
+    "db":{
+        "user": "postgres",
+        "password": ".101BgF123",
+        "host": "localhost",
+        "database": "prontomas",
+        "ssl": false,
+        "port": 5432
+    },
+    "allureResultsPath":"cypress/allure/allure_results",
+    "allureLogCypress":true,
+    "allureLogGherkin":true,
+    "__cypress_cucumber_preprocessor_dont_use_this_suite": {
+        "isEventHandlersAttached": true
+        }
+
+}
+    
+    
+}
