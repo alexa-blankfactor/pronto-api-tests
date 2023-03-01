@@ -1,9 +1,10 @@
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then, DataTable } from "@badeball/cypress-cucumber-preprocessor";
 import { UserBuilder } from "../../../support/src/builders/UserBuilder";
 import {faker} from '@faker-js/faker';
 import { CountryIso3 } from "../../../support/src/constans/CountryIso3";
 import { User } from "../../../support/src/domain/User";
 import {keycloak} from '../../../support/src/services/keycloak';
+import { userManagement } from "../../../support/src/services/userManagement";
 
 
 When("sends a request to create an account", () => {
@@ -26,16 +27,8 @@ When("sends a request to create an account", () => {
       .withPhoneNumberSmsEnabled(false)
       .withPassword("123456").build();
     cy.wrap(newUser).as('newUser');
-    cy.api({
-    method:'POST',
-    failOnStatusCode:false,
-    url: `${Cypress.env('user_management_url')}/`,
-    headers :{
-    'x-api-key': Cypress.env('apiKey')
-    },
-    body: newUser
-
-    }).as('userResponse')
+    userManagement.createAccount(newUser);
+    
 });
 
 
@@ -67,7 +60,6 @@ Then("the user should be created in the database", () => {
       }
       
       ).then((result)=>{
-        cy.get('@newUser').then((value) =>{})
         expect(result.length).to.eq(1);
         expect(result[0].first_name).to.eq(newUser.getFirstName());
         expect(result[0].last_name).to.eq(newUser.getLastName());
@@ -84,6 +76,63 @@ Then("the user should exist in the user administrator", () => {
       expect(response.body.length).to.eq(1)
     })
 });
+
+
+
+When("sends a request to create an account with {string} type equal to", (field:string,table: DataTable) => {
+  cy.fixture(`createAccount/new-pronto-user-${field}.json`).then((user)=>{
+    var index: number= 0;
+    table.hashes().forEach((row)=>{
+      index = Number(row.JsonArrayIndex);
+
+    })
+    userManagement.createAccount(user[index]);
+      cy.wrap(user[index]).as('userJson');
+  })
+});
+
+
+
+Then("error code should be {string}", (errorCode: string) => {
+    cy.get('@userResponse').then((response)=>{
+       expect(response.body.errorCode).to.eq(errorCode);
+    })
+});
+
+
+Then("error description should be {string}", (errorDesc: string) => {
+	cy.get('@userResponse').then((response)=>{
+    expect(response.body.errorDescription).to.eq(errorDesc);
+ })
+});
+
+
+Then("the user should not be created in the database", () => {
+	cy.get('@userJson').then((newUser)=>{
+    cy.task("connectDB",
+      {dbconfig: Cypress.env('db'),
+      query: `select * from users where username = '${newUser.getUsername()}';`
+      }
+      
+      ).then((result)=>{
+        expect(result.length).to.eq(0);
+      })
+  });
+});
+
+
+Then("the user should not exist in the user administrator", () => {
+  keycloak.getAccessTokenByClientCredencials();
+  cy.get('@userJson').then((newUser=>keycloak.getUserByUsername(newUser.getUsername())));
+  cy.get('@userFound').its('status').should('eq',200);
+  cy.get('@userFound').then((response)=>{
+    expect(response.body.length).to.eq(0)
+  })
+});
+
+
+
+
 
 
 

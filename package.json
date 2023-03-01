@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:local": "cypress open --env configFile=development,allure=true",
-    "allure:report": "allure generate cypress/allure/allure_results — clean -o cypress/allure/allure_report",
-    "allure:clear": "rm -r cypress/allure/allure_results/ cypress/allure/allure_report/",
-    "allure:open": "allure open cypress/allure/allure_report/"
+    "cypress:local": "cypress open --env configFile=development,tags=@only",
+    "cypress:run": "cypress run --env configFile=development,tags=@only"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +14,10 @@
     "@bahmutov/cypress-extends": "^1.1.0",
     "@cypress/webpack-preprocessor": "^5.17.0",
     "@faker-js/faker": "^7.6.0",
-    "@shelex/cypress-allure-plugin": "^2.35.2",
     "cypress": "^12.6.0",
+    "cypress-mochawesome-reporter": "^3.3.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "mocha": "^10.2.0",
     "pg": "^8.9.0",
     "typescript": "^4.9.5"
   },

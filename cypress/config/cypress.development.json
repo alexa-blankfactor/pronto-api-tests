@@ -20,9 +20,6 @@
         "ssl": false,
         "port": 5432
     },
-    "allureResultsPath":"cypress/allure/allure_results",
-    "allureLogCypress":true,
-    "allureLogGherkin":true,
     "__cypress_cucumber_preprocessor_dont_use_this_suite": {
         "isEventHandlersAttached": true
         }

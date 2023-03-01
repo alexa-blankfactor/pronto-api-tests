@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom"],
+    "types": ["cypress", "node","cypress-plugin-api","cypress-mochawesome-reporter","@badeball/cypress-cucumber-preprocessor"],
+    "module": "commonjs",
+    "esModuleInterop": true,    
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["**/*.ts", "../cypress.config.ts"]
+}

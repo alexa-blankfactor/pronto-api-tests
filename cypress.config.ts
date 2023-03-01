@@ -6,7 +6,6 @@ import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 const {Client}= require('pg') ;
 const fs = require("fs-extra");
 const path = require("path");
-const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 async function getConfigurationByFile(file:string) {
   const pathToConfigFile = path.resolve('..', 'pronto-api-tests/cypress/config', `cypress.${file}.json`)
@@ -15,9 +14,23 @@ async function getConfigurationByFile(file:string) {
 }
 
 export default defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": true,
+    "html": true,
+    "json": true,
+    "embeddedScreenshots": false,
+    "charts": true,
+    "inline": true,
+    "code": true,
+    "autoOpen": true,
+  } ,
+  screenshotsFolder: "cypress/images",
   e2e: {
     specPattern: "cypress/e2e/features/**/*.feature",
     async setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
       on("task",{
         async connectDB(arg:{dbconfig: any, query:string}){
           const client= new Client(arg.dbconfig)
@@ -34,7 +47,6 @@ export default defineConfig({
         })
       );
       
-      allureWriter(on, config);
       const configfile= config.env.configFile || 'development'
       const env = await getConfigurationByFile(configfile);
       config.env= env.env
