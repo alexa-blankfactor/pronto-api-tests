@@ -1,0 +1,160 @@
+[
+    {
+        "firstName": "Jhon",
+        "middleName": null,
+        "lastName": 123456,
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": true,
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": null,
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": "",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Andres",
+        "lastName": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Merlina",
+        "lastName": [
+            "Lukas",
+            "Ramon"
+        ],
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Odell.Bradtke",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "eecdf6b4-6645-4cd8-b7b4-ab2c73e7a164",
+        "taxCountry": "COL",
+        "deviceToken": "113b135e-fc42-4f15-8f17-90977eb50918",
+        "address": {
+            "addressLines": [
+                "Crrera 60 # 62-02"
+            ],
+            "locality": "Rionegro",
+            "administrativeArea": "Antioquia",
+            "postalCode": "054040",
+            "countryIso3": "col"
+        },
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    }
+
+]
