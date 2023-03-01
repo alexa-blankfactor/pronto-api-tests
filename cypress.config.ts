@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress'
-import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import { addCucumberPreprocessorPlugin,afterRunHandler } from "@badeball/cypress-cucumber-preprocessor";
 import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 
@@ -14,23 +14,9 @@ async function getConfigurationByFile(file:string) {
 }
 
 export default defineConfig({
-  reporter: 'cypress-mochawesome-reporter',
-  "reporterOptions": {
-    "reportDir": "cypress/results",
-    "overwrite": true,
-    "html": true,
-    "json": true,
-    "embeddedScreenshots": false,
-    "charts": true,
-    "inline": true,
-    "code": true,
-    "autoOpen": true,
-  } ,
-  screenshotsFolder: "cypress/images",
   e2e: {
     specPattern: "cypress/e2e/features/**/*.feature",
     async setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
       on("task",{
         async connectDB(arg:{dbconfig: any, query:string}){
           const client= new Client(arg.dbconfig)
@@ -46,6 +32,28 @@ export default defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
+      on('after:run', async (results) => {
+        if (results) {
+          await afterRunHandler(config);
+          fs.writeFileSync(
+            'cypress/reports/results.json',
+            JSON.stringify(
+              {
+                browserName: results.browserName,
+                browserVersion: results.browserVersion,
+                osName: results.osName,
+                osVersion: results.osVersion,
+                nodeVersion: results.config.resolvedNodeVersion,
+                cypressVersion: results.cypressVersion,
+                startedTestsAt: results.startedTestsAt,
+                endedTestsAt: results.endedTestsAt,
+              },
+              null,
+              '\t',
+            ),
+          );
+        }
+      });
       
       const configfile= config.env.configFile || 'development'
       const env = await getConfigurationByFile(configfile);

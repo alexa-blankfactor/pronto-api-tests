@@ -6,7 +6,8 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:local": "cypress open --env configFile=development,tags=@only",
-    "cypress:run": "cypress run --env configFile=development,tags=@only"
+    "cypress:run": "cypress run --env configFile=development,tags=@only",
+    "report": "node cypress.report.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,9 +16,9 @@
     "@cypress/webpack-preprocessor": "^5.17.0",
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.6.0",
-    "cypress-mochawesome-reporter": "^3.3.0",
     "eslint-plugin-cypress": "^2.12.1",
     "mocha": "^10.2.0",
+    "multiple-cucumber-html-reporter": "^3.2.0",
     "pg": "^8.9.0",
     "typescript": "^4.9.5"
   },
@@ -28,6 +29,15 @@
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,ts}",
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "json": {
+      "enabled": true,
+      "formatter": "./jsonFormatter/cucumber-json-formatter",
+      "output": "cypress/reports/json/cucumber-report.json"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/messages/cucumber-messages.ndjson"
+    }
   }
 }
