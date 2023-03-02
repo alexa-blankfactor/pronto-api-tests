@@ -88,7 +88,7 @@ Feature: Create a new account in Prontomás
       | array                | 5              |
       | invalid email format | 6              |
 
-  @only
+
   Scenario Outline: Invalid username attributes to the POST endpoint throw valid status code and error message
     When sends a request to create an account with "username" type equal to
       | usernameType   | JsonArrayIndex   |
@@ -109,6 +109,223 @@ Feature: Create a new account in Prontomás
       | below_min_length | 5              |
       | array            | 6              |
 
+
+  Scenario Outline: Invalid taxId attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "taxid" type equal to
+      | taxIdType   | JsonArrayIndex   |
+      | <taxIdType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "taxId invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | taxIdType        | JsonArrayIndex |
+      | int              | 0              |
+      | boolean          | 1              |
+      | null             | 2              |
+      | blank            | 3              |
+      | above_max_length | 4              |
+      | array            | 5              |
+
+
+  Scenario Outline: Invalid taxCountry attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "taxcountry" type equal to
+      | taxCountryType   | JsonArrayIndex   |
+      | <taxCountryType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "taxCountry invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | taxCountryType   | JsonArrayIndex |
+      | int              | 0              |
+      | boolean          | 1              |
+      | null             | 2              |
+      | blank            | 3              |
+      | above_max_length | 4              |
+      | array            | 5              |
+
+
+  Scenario Outline: Invalid deviceToken attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "devicetoken" type equal to
+      | deviceTokenType   | JsonArrayIndex   |
+      | <deviceTokenType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "deviceToken invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | deviceTokenType | JsonArrayIndex |
+      | int             | 0              |
+      | boolean         | 1              |
+      | null            | 2              |
+      | blank           | 3              |
+      | array           | 4              |
+
+
+  Scenario Outline: Invalid address attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address" type equal to
+      | addressType   | JsonArrayIndex   |
+      | <addressType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | addressType | JsonArrayIndex |
+      | int         | 0              |
+      | boolean     | 1              |
+      | null        | 2              |
+      | string      | 3              |
+      | emptyObject | 4              |
+
+  @only
+  Scenario Outline: Invalid address.addressLines attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address-addressLines" type equal to
+      | address.addressLinesType   | JsonArrayIndex   |
+      | <address.addressLinesType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address.addressLines invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | address.addressLinesType | JsonArrayIndex |
+      | int                      | 0              |
+      | boolean                  | 1              |
+      | null                     | 2              |
+      | string                   | 3              |
+      | emptyArray               | 4              |
+
+  @only
+  Scenario Outline: Invalid address.locality attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address-locality" type equal to
+      | address.localityType   | JsonArrayIndex   |
+      | <address.localityType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address.locality invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | address.localityType | JsonArrayIndex |
+      | int                  | 0              |
+      | boolean              | 1              |
+      | null                 | 2              |
+      | blank                | 3              |
+      | above_max_length     | 4              |
+      | array                | 5              |
+
+
+  Scenario Outline: Invalid address.administrativeArea attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address-administrativeArea" type equal to
+      | address.administrativeAreaType   | JsonArrayIndex   |
+      | <address.administrativeAreaType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address.administrativeArea invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | address.administrativeAreaType | JsonArrayIndex |
+      | int                            | 0              |
+      | boolean                        | 1              |
+      | null                           | 2              |
+      | blank                          | 3              |
+      | above_max_length               | 4              |
+      | array                          | 5              |
+
+
+  Scenario Outline: Invalid address.postalCode attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address-postalCode" type equal to
+      | address.postalCodeType   | JsonArrayIndex   |
+      | <address.postalCodeType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address.postalCode invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | address.postalCodeType | JsonArrayIndex |
+      | int                    | 0              |
+      | boolean                | 1              |
+      | null                   | 2              |
+      | blank                  | 3              |
+      | above_max_length       | 4              |
+      | array                  | 5              |
+
+
+  Scenario Outline: Invalid address.countryIso3 attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "address-countryIso3" type equal to
+      | address.countryIso3Type   | JsonArrayIndex   |
+      | <address.countryIso3Type> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "address.countryIso3 invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | address.countryIso3Type | JsonArrayIndex |
+      | int                     | 0              |
+      | boolean                 | 1              |
+      | null                    | 2              |
+      | blank                   | 3              |
+      | above_max_length        | 4              |
+      | below_min_length        | 5              |
+      | array                   | 6              |
+
+
+  Scenario Outline: Invalid phoneNumber attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "phoneNumber" type equal to
+      | phoneNumberType   | JsonArrayIndex   |
+      | <phoneNumberType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "phoneNumber invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | phoneNumberType | JsonArrayIndex |
+      | int             | 0              |
+      | boolean         | 1              |
+      | null            | 2              |
+      | string          | 3              |
+      | emptyObject     | 4              |
+
+  @only
+  Scenario Outline: Invalid phoneNumber.phoneNumber attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "phoneNumber-phoneNumber" type equal to
+      | phoneNumber.phoneNumberType   | JsonArrayIndex   |
+      | <phoneNumber.phoneNumberType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "phoneNumber.phoneNumber invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | phoneNumber.phoneNumberType | JsonArrayIndex |
+      | int                         | 0              |
+      | boolean                     | 1              |
+      | null                        | 2              |
+      | blank                       | 3              |
+      | above_max_length            | 4              |
+      | array                       | 5              |
+      | alphanumeric                | 6              |
 
   Scenario: Create an account with an existing email
     Given sends a request to create an account with email "test1@test.com"

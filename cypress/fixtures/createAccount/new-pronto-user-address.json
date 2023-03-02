@@ -1,0 +1,91 @@
+[
+    {
+        "firstName": "Jhon",
+        "middleName": null,
+        "lastName": "Valencia",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Ed_Cole60",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "123456789",
+        "taxCountry": "COL",
+        "deviceToken": "98ebc0f4-02f0-4140-a0f0-1c825c30f0f5",
+        "address": 1235,
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": "Valencia",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Ed_Cole60",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "123456789",
+        "taxCountry": "COL",
+        "deviceToken": "98ebc0f4-02f0-4140-a0f0-1c825c30f0f5",
+        "address": false,
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": "Valencia",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Ed_Cole60",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "123456789",
+        "taxCountry": "COL",
+        "deviceToken": "98ebc0f4-02f0-4140-a0f0-1c825c30f0f5",
+        "address": null,
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Camilo",
+        "middleName": null,
+        "lastName": "Valencia",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Ed_Cole60",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "123456789",
+        "taxCountry": "COL",
+        "deviceToken": "98ebc0f4-02f0-4140-a0f0-1c825c30f0f5",
+        "address": "carrera 15 a",
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    },
+    {
+        "firstName": "Merlina",
+        "lastName": "Valencia",
+        "email": "Elvie.Nienow69@hotmail.com",
+        "username": "Ed_Cole60",
+        "dateOfBirth": "1997/01/01",
+        "taxId": "123456789",
+        "taxCountry": "COL",
+        "deviceToken": "98ebc0f4-02f0-4140-a0f0-1c825c30f0f5",
+        "address": {},
+        "phoneNumber": {
+            "phoneNumber": "31413241243",
+            "countryCode": "57",
+            "smsEnabled": false
+        },
+        "password": "123456"
+    }
+]
