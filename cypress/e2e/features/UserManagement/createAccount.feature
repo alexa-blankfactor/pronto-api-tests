@@ -67,7 +67,7 @@ Feature: Create a new account in Prontomás
       | above_max_length | 4              |
       | array            | 5              |
 
-  @only
+  
   Scenario Outline: Invalid email attributes to the POST endpoint throw valid status code and error message
     When sends a request to create an account with "email" type equal to
       | emailType   | JsonArrayIndex   |
@@ -187,7 +187,7 @@ Feature: Create a new account in Prontomás
       | string      | 3              |
       | emptyObject | 4              |
 
-  @only
+  
   Scenario Outline: Invalid address.addressLines attributes to the POST endpoint throw valid status code and error message
     When sends a request to create an account with "address-addressLines" type equal to
       | address.addressLinesType   | JsonArrayIndex   |
@@ -206,7 +206,7 @@ Feature: Create a new account in Prontomás
       | string                   | 3              |
       | emptyArray               | 4              |
 
-  @only
+  
   Scenario Outline: Invalid address.locality attributes to the POST endpoint throw valid status code and error message
     When sends a request to create an account with "address-locality" type equal to
       | address.localityType   | JsonArrayIndex   |
@@ -306,7 +306,7 @@ Feature: Create a new account in Prontomás
       | string          | 3              |
       | emptyObject     | 4              |
 
-  @only
+
   Scenario Outline: Invalid phoneNumber.phoneNumber attributes to the POST endpoint throw valid status code and error message
     When sends a request to create an account with "phoneNumber-phoneNumber" type equal to
       | phoneNumber.phoneNumberType   | JsonArrayIndex   |
@@ -327,11 +327,98 @@ Feature: Create a new account in Prontomás
       | array                       | 5              |
       | alphanumeric                | 6              |
 
-  Scenario: Create an account with an existing email
-    Given sends a request to create an account with email "test1@test.com"
-    When sends a request to create an account with an existing email "test1@test.com"
+
+  Scenario Outline: Invalid phoneNumber.countryCode attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "phoneNumber-countryCode" type equal to
+      | phoneNumber.countryCodeType   | JsonArrayIndex   |
+      | <phoneNumber.countryCodeType> | <JsonArrayIndex> |
     Then the status code should be 400
-    And error code should be "001001"
+    And error code should be "002000"
+    And error description should be "phoneNumber.countryCode invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | phoneNumber.countryCodeType | JsonArrayIndex |
+      | int                         | 0              |
+      | boolean                     | 1              |
+      | null                        | 2              |
+      | blank                       | 3              |
+      | array                       | 4              |
+
+
+  Scenario Outline: Invalid phoneNumber.smsEnabled attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "phoneNumber-smsEnabled" type equal to
+      | phoneNumber.smsEnabledType   | JsonArrayIndex   |
+      | <phoneNumber.smsEnabledType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "phoneNumber.smsEnabled invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | phoneNumber.smsEnabledType | JsonArrayIndex |
+      | int                        | 0              |
+      | string                     | 1              |
+      | null                       | 2              |
+      | array                      | 3              |
+
+  
+  Scenario Outline: Invalid password attributes to the POST endpoint throw valid status code and error message
+    When sends a request to create an account with "password" type equal to
+      | passwordType   | JsonArrayIndex   |
+      | <passwordType> | <JsonArrayIndex> |
+    Then the status code should be 400
+    And error code should be "002000"
+    And error description should be "password invalid type"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+    Examples:
+      | passwordType     | JsonArrayIndex |
+      | int              | 0              |
+      | boolean          | 1              |
+      | null             | 2              |
+      | blank            | 3              |
+      | above_max_length | 4              |
+      | below_min_length | 5              |
+      | array            | 6              |
+
+  
+  Scenario: Create an account with an existing email
+    Given sends a request to create an account with email "test10@test.com"
+    When sends a request to create an account with an existing email "test10@test.com"
+    Then the status code should be 400
+    And error code should be "102001"
     And error description should be "The email has already been registered."
     And the user should be created in the database once
     And the user should exist in the user administrator once
+
+  
+  Scenario: Create an account with an existing username
+    Given sends a request to create an account with username "Albionraft_g07"
+    When sends a request to create an account with an existing username "Albionraft_g07"
+    Then the status code should be 400
+    And error code should be "102001"
+    And error description should be "The email has already been registered."
+    And the user should be created in the database once
+    And the user should exist in the user administrator once
+
+  
+  Scenario: Under-age user creates an account
+    When sends a request to create an account with birth date "17/11/2007"
+    Then the status code should be 400
+    And error code should be "102001"
+    And error description should be "Prontomás está disponible únicamente para mayores de 18 años"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
+
+  @only
+  Scenario: Create an account where the postal code doesn't match the address
+    When sends a request to create an account with postal code "056030", city "Sabaneta", state "Atlantico" and address "Carrera 60 A #62-02"
+    Then the status code should be 400
+    And error code should be "102001"
+    And error description should be "The postal code and address don't match"
+    And the user should not be created in the database
+    And the user should not exist in the user administrator
